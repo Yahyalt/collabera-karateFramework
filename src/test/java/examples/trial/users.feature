@@ -4,6 +4,7 @@ Feature: gorest users
     * url baseUrl
     * header Authorization = 'Bearer ' + token
 
+    @getAllUsers
   Scenario: get all users
     Given path 'users'
     When method get
