@@ -25,5 +25,13 @@ Feature: GoRest User API Testing
     And match response.id == '#number'
     * Holder.id = response.id
     * print 'Successfully created employee with ID:', response.id
+
+    Scenario: Fetch employee by ID and verify status
+    * def userIdCreated = Holder.id
+    Given path 'users', userIdCreated
+    And header Authorization = authHeader
+    When method get
+    Then status 200
+    And match response.id == userIdCreated
     And match response.status == '#regex ^(active|inactive)$'
-    * print 'Status check passed - value was:', response.status
+    * print 'Successfully fetched employee with ID:', userIdCreated
