@@ -6,6 +6,9 @@ function fn() {
     baseUrl: dotenv.get('GOREST_BASE_URL'),
     token: dotenv.get('GOREST_TOKEN')
   };
+karate.configure('logPrettyRequest', true);
+karate.configure('logPrettyResponse', true);
 
   return config;
+
 }
