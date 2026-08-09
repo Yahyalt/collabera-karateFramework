@@ -2,11 +2,14 @@ Feature: GoRest User API Testing
 
   Background:
     * url baseUrl
-    * header Authorization = 'Bearer ' + token
+    * def authHeader = 'Bearer ' + token
     * header Accept = 'application/json'
+      * def Holder = Java.type('examples.task.IdHolder')
 
   Scenario: Create employee, verify ID, then fetch by ID and verify status
     Given path 'users'
+    And header Authorization = authHeader
+    And header Accept = 'application/json'
     And request
       """
       {
