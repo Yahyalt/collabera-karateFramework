@@ -21,3 +21,7 @@ Feature: GoRest User API Testing
     * print 'Full response:', response
     And match response.id == '#number'
     * print 'Successfully created employee with ID:', response.id
+    * print 'Successfully created employee with ID:', userIdCreated
+    # Scenario 2
+    And match response.status == '#regex ^(active|inactive)$'
+    * print 'Status check passed - value was:', response.status
