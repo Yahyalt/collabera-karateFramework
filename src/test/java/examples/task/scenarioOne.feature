@@ -35,3 +35,12 @@ Feature: GoRest User API Testing
     And match response.id == userIdCreated
     And match response.status == '#regex ^(active|inactive)$'
     * print 'Successfully fetched employee with ID:', userIdCreated
+
+    Scenario: Get list of employeess
+      Given path 'users', 
+      And header Authorization = authHeader
+      And header Accept = 'application/json'
+      When method get
+      Then status 200
+      And match response == '#[]'
+      * print ' successfully fetched list of employees:', response
